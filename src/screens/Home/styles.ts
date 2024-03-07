@@ -7,4 +7,9 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
-export const Title = styled.Text``;
+export const Title = styled.Text`
+  font-size: 24px;
+  /* font-weight: bold; */
+  /* font-family: 'Jost-Bold'; */
+  font-family: ${({theme}) => theme.fonts.family.jostBold};
+`;

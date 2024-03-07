@@ -170,10 +170,11 @@ export const myTheme = {
     medium: '3px 5px 9px rgba(0, 0, 0, 0.1)',
     large: '5px 8px 15px rgba(0, 0, 0, 0.15)',
   },
-  font: {
+  fonts: {
     family: {
-      primary: "'Jost', 'Roboto', 'sans-serif'",
-      secondary: "'Poppins', 'Roboto', 'sans-serif'",
+      jostRegular: 'Jost-Regular',
+      jostMedium: 'Jost-Medium',
+      jostBold: 'Jost-Bold',
     },
     sizes: {
       none: 0,
