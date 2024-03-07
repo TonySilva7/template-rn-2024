@@ -1,24 +1,15 @@
-import {Header} from '../../components/Header';
 import React from 'react';
-import {Text, View, ViewProps, StyleSheet} from 'react-native';
+import {ViewProps} from 'react-native';
+import {Header} from '../../components/Header';
+import {Container, Title} from './styles';
 
 type HomeProps = ViewProps;
 
 export function Home({...rest}: HomeProps) {
   return (
-    <View style={styles.container} {...rest}>
+    <Container {...rest}>
       <Header />
-      <Text>Hello Home</Text>
-    </View>
+      <Title>Hello Home</Title>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-  },
-});
