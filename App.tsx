@@ -1,16 +1,21 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StatusBar, Text, View} from 'react-native';
+import {StatusBar} from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {Routes} from './src/routes';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <StatusBar barStyle="light-content" />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Hello New Project</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent
+        />
+
+        <Routes />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

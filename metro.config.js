@@ -1,5 +1,6 @@
 const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 
+console.log('MEU LOG ----->>>>', __dirname);
 /**
  * Metro configuration
  * https://facebook.github.io/metro/docs/configuration
