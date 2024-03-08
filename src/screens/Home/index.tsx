@@ -17,6 +17,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import {useMyStore} from '../../store';
 import {GAT_API_URL} from '@env';
+import Geolocation from '@react-native-community/geolocation';
 
 type HomeProps = ViewProps;
 
@@ -52,6 +53,30 @@ export function Home({...rest}: HomeProps) {
   const onSubmit = handleSubmit(submit);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const getLocation = async () => {
+    setLoading(true);
+
+    const myPromise = new Promise((resolve, reject) => {
+      Geolocation.getCurrentPosition(
+        (position: any) => {
+          console.log('Latitude:', position.coords.latitude);
+          console.log('Longitude:', position.coords.longitude);
+          resolve(position.coords);
+        },
+        (error: any) => {
+          console.log(error.message);
+          reject(error.message);
+        },
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+      );
+    });
+
+    const coords = await myPromise;
+    console.log('Terminou...', coords);
+    setLoading(false);
+  };
 
   return (
     <Container {...rest}>
@@ -85,7 +110,7 @@ export function Home({...rest}: HomeProps) {
         name="password"
       />
       {errors.password && <Text>Senha inválida.</Text>}
-      <Button title="Press me" onPress={onSubmit} />
+      <Button title="Enviar Formulário" onPress={onSubmit} />
 
       <Modal
         customColor="transparent"
@@ -99,16 +124,24 @@ export function Home({...rest}: HomeProps) {
             <Text style={styles.modalText}>Hello World!</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              onPress={getLocation}>
+              {loading ? (
+                <Text>Carregando...</Text>
+              ) : (
+                <Text style={styles.textStyle}>Pegar localização</Text>
+              )}
             </Pressable>
+            <Button
+              title="Fechar modal"
+              onPress={() => setModalVisible(false)}
+            />
           </View>
         </View>
       </Modal>
       <Pressable
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
+        <Text style={styles.textStyle}>Abrir Modal</Text>
       </Pressable>
     </Container>
   );
