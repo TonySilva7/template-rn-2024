@@ -16,6 +16,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import {useMyStore} from '../../store';
+import {GAT_API_URL} from '@env';
 
 type HomeProps = ViewProps;
 
@@ -45,6 +46,7 @@ export function Home({...rest}: HomeProps) {
   const submit = (dta: IForm) => {
     setMyData(dta.email, dta.password);
     showData();
+    console.log('GAT_API_URL', GAT_API_URL);
   };
 
   const onSubmit = handleSubmit(submit);
