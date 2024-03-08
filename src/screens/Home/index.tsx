@@ -15,6 +15,7 @@ import {Container, Title} from './styles';
 import {Controller, useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import * as zod from 'zod';
+import {useMyStore} from '../../store';
 
 type HomeProps = ViewProps;
 
@@ -33,8 +34,17 @@ export function Home({...rest}: HomeProps) {
   } = useForm<IForm>({
     resolver: zodResolver(schema),
   });
-  const submit = () => {
-    console.log('submit');
+
+  const {showData, setMyData} = useMyStore(store => {
+    return {
+      showData: store.showData,
+      setMyData: store.setMyData,
+    };
+  });
+
+  const submit = (dta: IForm) => {
+    setMyData(dta.email, dta.password);
+    showData();
   };
 
   const onSubmit = handleSubmit(submit);
