@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import 'react-native-get-random-values';
 import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
