@@ -5844,6 +5844,11 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-background-fetch@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-background-fetch/-/react-native-background-fetch-4.2.2.tgz#39661ac4f6dac8ce2249e1c9e93aaa8a4f9f560e"
+  integrity sha512-7ORHtzV4s7OmekbteJt3ipaYq6Qw5RsfjvAf2ac9a47fa0UeNbOaLkwQHrrJq1fnINpVe1L1B0K5OIICZBAziw==
+
 react-native-dotenv@^3.4.11:
   version "3.4.11"
   resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-3.4.11.tgz#2e6c4eabd55d5f1bf109b3dd9141dadf9c55cdd4"
