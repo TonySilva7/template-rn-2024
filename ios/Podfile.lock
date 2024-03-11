@@ -1123,6 +1123,8 @@ PODS:
     - React
   - RNBackgroundFetch (4.2.2):
     - React-Core
+  - RNCAsyncStorage (1.22.3):
+    - React-Core
   - RNScreens (3.29.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1208,6 +1210,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RealmJS (from `../node_modules/realm`)
   - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1333,6 +1336,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/realm"
   RNBackgroundFetch:
     :path: "../node_modules/react-native-background-fetch"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   Yoga:
@@ -1403,6 +1408,7 @@ SPEC CHECKSUMS:
   ReactCommon: 2947b0bffd82ea0e58ca7928881152d4c6dae9af
   RealmJS: 385df5ee940d96f1de26b1dab153e325633d3052
   RNBackgroundFetch: 35c7183f6eeff69396d42c4b206e1ae2a21e9327
+  RNCAsyncStorage: 10591b9e0a91eaffee14e69b3721009759235125
   RNScreens: 17e2f657f1b09a71ec3c821368a04acbb7ebcb46
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: a716eea57d0d3430219c0a5a233e1e93ee931eb7
