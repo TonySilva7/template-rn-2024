@@ -18,6 +18,7 @@ import * as zod from 'zod';
 import {useMyStore} from '../../store';
 import {GAT_API_URL} from '@env';
 import Geolocation from '@react-native-community/geolocation';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 type HomeProps = ViewProps;
 
@@ -36,6 +37,20 @@ export function Home({...rest}: HomeProps) {
   } = useForm<IForm>({
     resolver: zodResolver(schema),
   });
+
+  const netInfo = useNetInfo();
+
+  const isConnected = () => {
+    const summaryNet = {
+      type: netInfo.type,
+      isConnected: netInfo.isConnected,
+      isInternetReachable: netInfo.isInternetReachable,
+      isWifiEnabled: netInfo.isWifiEnabled,
+      details: netInfo.details,
+    };
+
+    console.log('Está conectado a internet?', summaryNet);
+  };
 
   const {showData, setMyData} = useMyStore(store => {
     return {
@@ -82,35 +97,40 @@ export function Home({...rest}: HomeProps) {
     <Container {...rest}>
       <Header />
       <Title>Hello Home</Title>
-      <Controller
-        control={control}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            placeholder="Email"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="email"
-      />
-      {errors.email && <Text>Email inválido.</Text>}
+      <View>
+        <Controller
+          control={control}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              placeholder="Email"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="email"
+        />
+        {errors.email && <Text>Email inválido.</Text>}
 
-      <Controller
-        control={control}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            placeholder="Senha"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            secureTextEntry
-          />
-        )}
-        name="password"
-      />
-      {errors.password && <Text>Senha inválida.</Text>}
-      <Button title="Enviar Formulário" onPress={onSubmit} />
+        <Controller
+          control={control}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              placeholder="Senha"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
+            />
+          )}
+          name="password"
+        />
+        {errors.password && <Text>Senha inválida.</Text>}
+        <Button title="Enviar Formulário" onPress={onSubmit} />
+      </View>
+      <View>
+        <Button title="Verificar conexão?" onPress={isConnected} />
+      </View>
 
       <Modal
         customColor="transparent"
