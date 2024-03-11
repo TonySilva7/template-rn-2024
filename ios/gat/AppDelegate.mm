@@ -12,8 +12,8 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   
-  + // [REQUIRED] Register BackgroundFetch
-  + [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+  // [REQUIRED] Register BackgroundFetch
+  [[TSBackgroundFetch sharedInstance] didFinishLaunching];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
